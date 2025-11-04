@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>加载中...</title>
+  <script>
+    // GitHub Pages SPA redirect solution
+    // Store the requested path and redirect to index.html
+    sessionStorage.setItem('redirect', location.pathname + location.search + location.hash);
+    location.replace('/');
+  </script>
+</head>
+<body>
+  加载中...
+</body>
+</html>
