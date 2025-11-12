@@ -7,14 +7,180 @@
     <meta name="description" content="专业的在线发卡平台，购买后自动发货，支持支付宝、微信支付，7×24小时全天候服务，安全快速便捷">
     <meta name="keywords" content="在线发卡,自动发货,卡密购买,虚拟商品">
     <meta name="author" content="在线发卡平台" />
-
-  
-  <link rel="icon" type="image/x-icon" href="https://storage.googleapis.com/gpt-engineer-file-uploads/p5pHU7mWuwRoNaSTdwgisGYgF8e2/uploads/1762256277763-swan-logo-Dwai6gok.png">
-  <script type="module" crossorigin src="/assets/index-fix3.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-fix3.css">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="天鹅发卡">
+    <link rel="apple-touch-icon" href="https://storage.googleapis.com/gpt-engineer-file-uploads/p5pHU7mWuwRoNaSTdwgisGYgF8e2/uploads/1762256277763-swan-logo-Dwai6gok.png">
+    <link rel="icon" type="image/x-icon" href="https://storage.googleapis.com/gpt-engineer-file-uploads/p5pHU7mWuwRoNaSTdwgisGYgF8e2/uploads/1762256277763-swan-logo-Dwai6gok.png">
+  <script type="module" crossorigin src="/assets/index-BohdR2yf.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BkOr3K9D.css">
 </head>
 
   <body>
     <div id="root"></div>
+    <script>
+      (function() {
+        const API_URL = (typeof window !== 'undefined' && window.__API_URL__) || 
+                        (typeof window !== 'undefined' ? window.location.origin : '');
+        
+        function applyTheme(settings) {
+          const root = document.documentElement;
+          
+          if (settings.theme_preset) {
+            const presets = {
+              'blue': { primary: '192 71% 60%', accent: '193 82% 48%', primaryGlow: '192 71% 70%' },
+              'green': { primary: '142 71% 45%', accent: '142 76% 36%', primaryGlow: '142 71% 55%' },
+              'purple': { primary: '262 83% 58%', accent: '262 80% 50%', primaryGlow: '262 83% 68%' },
+              'red': { primary: '0 84% 60%', accent: '0 90% 50%', primaryGlow: '0 84% 70%' },
+              'orange': { primary: '25 95% 53%', accent: '25 100% 45%', primaryGlow: '25 95% 63%' },
+              'pink': { primary: '330 81% 60%', accent: '330 85% 52%', primaryGlow: '330 81% 70%' },
+              'cyan': { primary: '188 78% 41%', accent: '188 85% 35%', primaryGlow: '188 78% 51%' },
+              'indigo': { primary: '239 84% 67%', accent: '239 90% 59%', primaryGlow: '239 84% 77%' }
+            };
+            
+            const preset = presets[settings.theme_preset];
+            if (preset) {
+              root.style.setProperty('--primary', preset.primary);
+              root.style.setProperty('--accent', preset.accent);
+              root.style.setProperty('--ring', preset.primary);
+              root.style.setProperty('--sidebar-ring', preset.primary);
+              if (preset.primaryGlow) {
+                root.style.setProperty('--primary-glow', preset.primaryGlow);
+              }
+              
+              const hsl = preset.primary.match(/(\d+(?:\.\d+)?)\s+(\d+(?:\.\d+)?)%\s+(\d+(?:\.\d+)?)%/);
+              if (hsl) {
+                const h = parseFloat(hsl[1]);
+                root.style.setProperty('--gradient-hero', 
+                  `linear-gradient(180deg, hsl(${h} 30% 96%), hsl(${h} 60% 92%))`);
+              }
+              
+              root.style.setProperty('--gradient-primary', 
+                `linear-gradient(135deg, hsl(${preset.accent}), hsl(${preset.primaryGlow || preset.primary}))`);
+              root.style.setProperty('--shadow-button', 
+                `0 4px 12px hsl(${preset.accent} / 0.35)`);
+            }
+          } else if (settings.theme_primary) {
+            root.style.setProperty('--primary', settings.theme_primary);
+            root.style.setProperty('--ring', settings.theme_primary);
+            root.style.setProperty('--sidebar-ring', settings.theme_primary);
+            
+            if (settings.theme_accent) {
+              root.style.setProperty('--accent', settings.theme_accent);
+            }
+            
+            if (settings.theme_primary_glow) {
+              root.style.setProperty('--primary-glow', settings.theme_primary_glow);
+            }
+            
+            const hsl = settings.theme_primary.match(/(\d+(?:\.\d+)?)\s+(\d+(?:\.\d+)?)%\s+(\d+(?:\.\d+)?)%/);
+            if (hsl) {
+              const h = parseFloat(hsl[1]);
+              root.style.setProperty('--gradient-hero', 
+                `linear-gradient(180deg, hsl(${h} 30% 96%), hsl(${h} 60% 92%))`);
+            }
+            
+            if (settings.theme_accent) {
+              root.style.setProperty('--gradient-primary', 
+                `linear-gradient(135deg, hsl(${settings.theme_accent}), hsl(${settings.theme_primary_glow || settings.theme_primary}))`);
+              root.style.setProperty('--shadow-button', 
+                `0 4px 12px hsl(${settings.theme_accent} / 0.35)`);
+            }
+          }
+        }
+        
+        function applyBackground(settings) {
+          const body = document.body;
+          const html = document.documentElement;
+          
+          if (settings.bg_image_url) {
+            const opacity = settings.bg_opacity !== undefined ? parseFloat(settings.bg_opacity) : 1;
+            const position = settings.bg_position || 'center';
+            const size = settings.bg_size || 'cover';
+            const repeat = settings.bg_repeat || 'no-repeat';
+            
+            let bgImage;
+            if (opacity < 1) {
+              bgImage = 'linear-gradient(rgba(255, 255, 255, ' + (1 - opacity) + '), rgba(255, 255, 255, ' + (1 - opacity) + ')), url(' + settings.bg_image_url + ')';
+            } else {
+              bgImage = 'url(' + settings.bg_image_url + ')';
+            }
+            
+            body.style.backgroundImage = bgImage;
+            body.style.backgroundPosition = position;
+            body.style.backgroundSize = size;
+            body.style.backgroundRepeat = repeat;
+            body.style.backgroundAttachment = 'fixed';
+            
+            html.style.backgroundImage = bgImage;
+            html.style.backgroundPosition = position;
+            html.style.backgroundSize = size;
+            html.style.backgroundRepeat = repeat;
+            html.style.backgroundAttachment = 'fixed';
+            
+            html.style.setProperty('--has-custom-bg', '1');
+            html.classList.add('has-custom-bg');
+            
+            if (settings.bg_color) {
+              body.style.backgroundColor = settings.bg_color;
+              html.style.backgroundColor = settings.bg_color;
+            }
+          } else if (settings.bg_color) {
+            body.style.backgroundColor = settings.bg_color;
+            html.style.backgroundColor = settings.bg_color;
+            body.style.backgroundImage = '';
+            html.style.backgroundImage = '';
+            html.style.setProperty('--has-custom-bg', '1');
+            html.classList.add('has-custom-bg');
+          } else {
+            body.style.backgroundImage = '';
+            body.style.backgroundColor = '';
+            html.style.backgroundImage = '';
+            html.style.backgroundColor = '';
+            html.style.removeProperty('--has-custom-bg');
+            html.classList.remove('has-custom-bg');
+          }
+        }
+        
+        const cachedTheme = localStorage.getItem('theme_settings');
+        if (cachedTheme) {
+          try {
+            const settings = JSON.parse(cachedTheme);
+            applyTheme(settings);
+            applyBackground(settings);
+          } catch (e) {
+          }
+        }
+        
+        if (!API_URL) {
+          return;
+        }
+        fetch(API_URL + '/api/settings')
+          .then(response => response.json())
+          .then(data => {
+            if (data.success && data.data) {
+              const themeData = {
+                theme_preset: data.data.theme_preset,
+                theme_primary: data.data.theme_primary,
+                theme_accent: data.data.theme_accent,
+                theme_primary_glow: data.data.theme_primary_glow,
+                bg_image_url: data.data.bg_image_url,
+                bg_opacity: data.data.bg_opacity,
+                bg_position: data.data.bg_position,
+                bg_size: data.data.bg_size,
+                bg_repeat: data.data.bg_repeat,
+                bg_color: data.data.bg_color
+              };
+              localStorage.setItem('theme_settings', JSON.stringify(themeData));
+              if (!cachedTheme || JSON.stringify(JSON.parse(cachedTheme)) !== JSON.stringify(themeData)) {
+                applyTheme(data.data);
+                applyBackground(data.data);
+              }
+            }
+          })
+          .catch(() => {
+          });
+      })();
+    </script>
   </body>
 </html>
