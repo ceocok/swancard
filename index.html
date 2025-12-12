@@ -20,7 +20,9 @@
     <div id="root"></div>
     <script>
       (function() {
-        const API_URL = (typeof window !== 'undefined' && window.__API_URL__) || 
+        const FIXED_API_URL = 'https://swanpayapi.cococ.eu.org';
+        const API_URL = FIXED_API_URL || 
+                        (typeof window !== 'undefined' && window.__API_URL__) || 
                         (typeof window !== 'undefined' ? window.location.origin : '');
         
         function applyTheme(settings) {
